@@ -68,7 +68,7 @@ class Frame9 extends JFrame{
 }
 public class MI3C_HWK1_412630153_01 {
     public static void main(String[] args){
-        int w = 162, h = 185, x1 = 0, y1 = 0, x2 = w * 2, y2 = 0;
+        int w = 162, h = 185, x1 = 0, y1 = 0, x2 = x1 + w * 2, y2 = y1 + 0;
         Frame9 f1 = new Frame9(1, x1, y1);
         f1.setSize(w, h);
         f1.setVisible(true);
