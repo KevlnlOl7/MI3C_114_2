@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 class ChatRoom extends JFrame implements ActionListener {
     JLabel l = new JLabel("Chatroom: Tamsui Never Sleep");
     JTextArea ta = new JTextArea();
+    JScrollPane sp = new JScrollPane(ta);
     JTextField tf1 = new JTextField("Name"), tf2 = new JTextField("Message");
     Font clubFont = new Font("Script MT Bold", Font.ITALIC, 24);
     ChatRoom(){
@@ -15,7 +16,7 @@ class ChatRoom extends JFrame implements ActionListener {
         Container cp = super.getContentPane();
         cp.setLayout(null);
         l.setFont(clubFont);
-        JComponent[] cs = {l, ta, tf1, tf2};
+        JComponent[] cs = {l, sp, tf1, tf2};
         int[] x = {85, 30, 30, 90}, y = {30, 70, 250, 250}, width = {400, 425, 50, 375}, height = {30, 170, 30, 30};
         for (int i = 0 ; i < cs.length; i++){
             cs[i].setBounds(x[i], y[i], width[i], height[i]);
@@ -38,9 +39,10 @@ class ChatRoom extends JFrame implements ActionListener {
         }
     }
     public void chatBot(){
+        String name = "Mary";
         String[] msgs = {"嗯嗯", "哈哈真的", "那確實", "我也這麼覺得", "我媽叫我吃飯了", "先洗澡等等回你", "先睡啦"};
         int index = (int)(Math.random() * msgs.length);
-        ta.append("Mary: " + msgs[index] + "\n");
+        ta.append(name +": "+ msgs[index] + "\n");
     }
 }
 public class MI3C_HWK2_412630153_04 {
