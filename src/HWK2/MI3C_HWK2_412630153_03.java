@@ -30,8 +30,8 @@ class ControlFrame extends JFrame implements ActionListener {
     }
     public void actionPerformed(ActionEvent e){
         try{
+            int num = Integer.parseInt(df.tf.getText());
             if(e.getSource() == b1){
-                int num = Integer.parseInt(df.tf.getText());
                 num = num + 1;
                 System.out.println(num);
                 df.tf.setText(num+"");
@@ -39,7 +39,6 @@ class ControlFrame extends JFrame implements ActionListener {
                 df.tf.setText(0+"");
                 System.out.println(0);
             }else if (e.getSource() == b3){
-                int num = Integer.parseInt(df.tf.getText());
                 num = num - 1;
                 System.out.println(num);
                 df.tf.setText(num+"");
