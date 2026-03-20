@@ -50,7 +50,7 @@ class OrderMenu extends JFrame implements ActionListener {
 public class MI3C_HWK3_412630153_01 {
     public static void main(String[] args){
         OrderMenu om = new OrderMenu();
-        om.setSize(400,400);
+        om.setSize(400,300);
         om.setVisible(true);
     }
 }
