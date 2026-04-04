@@ -39,12 +39,11 @@ public class MI3C_HWK4_412630153_01 {
         OprThread ot1 = new OprThread(a, b, c,'+');
         OprThread ot2 = new OprThread(a, b, d,'-');
         ot1.start(); ot2.start();
-        try{
+        try {
             ot1.join(); ot2.join();
-        }catch (Exception e){
+        }catch (InterruptedException e){
             e.printStackTrace();
         }
-
         System.out.println("c[]="+Arrays.toString(c));
         System.out.println("d[]="+Arrays.toString(d));
     }
