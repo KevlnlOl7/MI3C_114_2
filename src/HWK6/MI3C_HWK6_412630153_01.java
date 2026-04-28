@@ -10,18 +10,18 @@ import java.net.URL;
 
 public class MI3C_HWK6_412630153_01 {
     public static void main(String[] args) throws Exception{
-        int cnt = 0;
+        int cnt = 0; double delaySec = 60 * 10;
         while(true){
             try {
                 URL url = new URL("https://www.yahoo.com.tw");
                 HttpsURLConnection uc = (HttpsURLConnection) url.openConnection();
                 uc.addRequestProperty("User-Agent", "Mozilla/5.0");
-                HttpsURLConnection.setFollowRedirects(false); //老師防我們被網站告作的設定
+                HttpsURLConnection.setFollowRedirects(false); //老師防我們被網站告，所做的設定
                 int response = uc.getResponseCode();
                 try (BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream(), "utf-8"))) {
-                    String aLine = "", keyword = "日圓";
+                    String aLine, keyword = "川普";
                     int i = 0;
-                    double delaySec = 60 * 10;
+
                     while ((aLine = br.readLine()) != null) {
                         int index = aLine.indexOf(keyword);
                         if (index != -1) {
@@ -34,10 +34,11 @@ public class MI3C_HWK6_412630153_01 {
                     }
                     cnt++;
                     System.out.printf("網站狀態：%d\n已完成第 %d 輪掃描，共找到 %d 筆關鍵字\n%.2f 秒後會進行下一輪掃描\n", response, cnt, i, delaySec);
-                    delay(delaySec);
+
                 } catch (Exception ie) {
                     ie.printStackTrace();
                 }
+                delay(delaySec);
             }catch (Exception e){
                 e.printStackTrace();
             }
