@@ -1,4 +1,53 @@
 package HWK6;
 
+import javax.net.ssl.HttpsURLConnection;
+import java.awt.*;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URL;
+
 public class MI3C_HWK6_412630153_01 {
+    public static void main(String[] args) throws Exception{
+        int cnt = 0;
+        while(true){
+            try {
+                URL url = new URL("https://www.yahoo.com.tw");
+                HttpsURLConnection uc = (HttpsURLConnection) url.openConnection();
+                uc.addRequestProperty("User-Agent", "Mozilla/5.0");
+                HttpsURLConnection.setFollowRedirects(false); //老師防我們被網站告作的設定
+                int response = uc.getResponseCode();
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(uc.getInputStream(), "utf-8"))) {
+                    String aLine = "", keyword = "日圓";
+                    int i = 0;
+                    double delaySec = 60 * 10;
+                    while ((aLine = br.readLine()) != null) {
+                        int index = aLine.indexOf(keyword);
+                        if (index != -1) {
+                            int start = Math.max(0, index - 20);
+                            int end = Math.min(aLine.length(), index + 40);
+                            System.out.printf("[%d] ...\t %s\t...\n", i+1, aLine.substring(start, end));
+                            Toolkit.getDefaultToolkit().beep();
+                            i++;
+                        }
+                    }
+                    cnt++;
+                    System.out.printf("網站狀態：%d\n已完成第 %d 輪掃描，共找到 %d 筆關鍵字\n%.2f 秒後會進行下一輪掃描\n", response, cnt, i, delaySec);
+                    delay(delaySec);
+                } catch (Exception ie) {
+                    ie.printStackTrace();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    public static void delay(double sec){
+        try {
+            Thread.sleep((int)sec * 1000);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
 }
