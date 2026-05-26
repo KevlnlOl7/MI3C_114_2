@@ -1,129 +1,120 @@
-package HWK10;
 
-public class MI3C_HWK10_412630153_01 {
-    public static void main(String[] args) {
-        int sum = myFunction(12, 5, 16, 10, 7, 22, 6, 14, 9, 11);
-        System.out.println(sum);
-        test1();
+import javax.swing.DefaultListModel;
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+
+/**
+ *
+ * @author Leader
+ */
+public class MI3C_HWK10_412630153_01 extends javax.swing.JFrame {
+    
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MI3C_HWK10_412630153_01.class.getName());
+    DefaultListModel dlm = new DefaultListModel();
+    public MI3C_HWK10_412630153_01() {
+        initComponents();
+        this.orderList.setModel(dlm);
     }
-    public static int myFunction(int... n){
-        int sum = 0;
-        int i = 0;
-        while(i < n.length){
-            if(n[i] % 2 != 0){
-                sum+=n[i];
-            }
-            i++;
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        selBtn = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        menuList = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        orderList = new javax.swing.JList<>();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        selBtn.setText("Select");
+        selBtn.addActionListener(this::selBtnActionPerformed);
+        jPanel1.add(selBtn, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
+        jPanel2.setLayout(new java.awt.GridLayout());
+
+        menuList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Coke", "Fries", "Sundae", "Black Tea", "Konjac Jelly Milk Tea" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        menuList.addListSelectionListener(this::menuListValueChanged);
+        jScrollPane1.setViewportView(menuList);
+
+        jPanel2.add(jScrollPane1);
+
+        jScrollPane2.setViewportView(orderList);
+
+        jPanel2.add(jScrollPane2);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void selBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selBtnActionPerformed
+        dlm.clear();
+        int[] itemIdx = menuList.getSelectedIndices();
+        for(int idx : itemIdx){
+            dlm.addElement(menuList.getModel().getElementAt(idx));
         }
-        return sum;
-    }
-    public static void test1() {
-        int cnt = 0;
-        int i = 2;
-        while(cnt <= 400) {
-            if (isPrime(i)) {
-                cnt++;
-                if (cnt % 100 == 0) {
-                    System.out.println(i);
+    }//GEN-LAST:event_selBtnActionPerformed
+
+    private void menuListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_menuListValueChanged
+        // TODO add your handling code here:
+        if (!evt.getValueIsAdjusting()) {
+            dlm.clear();
+            int[] itemIdx = menuList.getSelectedIndices();
+            for(int idx : itemIdx){
+                dlm.addElement(menuList.getModel().getElementAt(idx));
+            }
+        }
+    }//GEN-LAST:event_menuListValueChanged
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
                 }
             }
-            i++;
+        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
+            logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new MI3C_HWK10_412630153_01().setVisible(true));
     }
-    public static boolean isPrime(int n){
-        int i = 2;
-        while(i < Math.sqrt(n)){
-            if(n%i==0){
-                return false;
-            }
-            i++;
-        }
-        return true;
-    }
-    public static int checkSum(char ch){
-        int num = 0;
-        switch (ch){
-            case 'A':
-                num = 10;
-                break;
-            case 'B':
-                num = 11;
-                break;
-            case 'C':
-                num = 12;
-                break;
-            case 'D':
-                num = 13;
-                break;
-            case 'E':
-                num = 14;
-                break;
-            case 'F':
-                num = 15;
-                break;
-            case 'G':
-                num = 16;
-                break;
-            case 'H':
-                num = 17;
-                break;
-            case 'I':
-                num = 34;
-                break;
-            case 'J':
-                num = 18;
-                break;
-            case 'K':
-                num = 19;
-                break;
-            case 'L':
-                num = 20;
-                break;
-            case 'M':
-                num = 21;
-                break;
-            case 'N':
-                num = 22;
-                break;
-            case 'O':
-                num = 35;
-                break;
-            case 'P':
-                num = 23;
-                break;
-            case 'Q':
-                num = 24;
-                break;
-            case 'R':
-                num = 25;
-                break;
-            case 'S':
-                num = 26;
-                break;
-            case 'T':
-                num = 27;
-                break;
-            case 'U':
-                num = 28;
-                break;
-            case 'V':
-                num = 29;
-                break;
-            case 'W':
-                num = 32;
-                break;
-            case 'X':
-                num = 30;
-                break;
-            case 'Y':
-                num = 31;
-                break;
-            case 'Z':
-                num = 33;
-                break;
-            default:
-                break;
-        }
-        return 0;
-    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> menuList;
+    private javax.swing.JList<String> orderList;
+    private javax.swing.JButton selBtn;
+    // End of variables declaration//GEN-END:variables
 }
